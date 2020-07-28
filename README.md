@@ -1,6 +1,6 @@
 # Simple Node Server
 
-This is a simple node server to call a my serverless lambda function to upload a jpeg file to S3.
+This is a simple server to test a my serverless lambda function(`https://github.com/devm1023/nodejs-sls-file-upload`) to upload a jpeg file to S3.
 
 ## Deploy
 

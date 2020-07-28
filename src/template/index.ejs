@@ -80,7 +80,12 @@
             return response.json();
           })
           .then(function(json){
-            return fetch(json.data.uploadFile.uri, {
+            var uploadUrl = json.data.uploadFile
+            console.log(uploadUrl);
+            if (!uploadUrl){
+              throw new Error('Incorrect filetype! Please only jpeg file!')
+            }
+            return fetch(uploadUrl.uri, {
               method: "PUT",
               body: new Blob([reader.result], {type: file.type})
             })
@@ -92,6 +97,8 @@
             var uploadedFileNode = document.createElement('div');
             uploadedFileNode.innerHTML = '<a href="'+fileUploadedUrl+'">'+ file.name +'</a>';
             list.appendChild(uploadedFileNode);
+          }).catch(function(error) {
+            alert(error);
           });
         });
         reader.readAsArrayBuffer(file);
